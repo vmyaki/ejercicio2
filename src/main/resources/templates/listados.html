@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8"/>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"/>
+	<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+	<title>Ejercicio1</title>
+</head>
+<body>
+
+	<h1>Bienvenido</h1> <span th:text="${mensaje}"></span>
+	
+	<p>Número de planetas en la lista <span class="badge badge-info" th:text="${galaxia.size()}"></span></p>
+	
+	<table class="table table-bordered">
+		<tr>
+			<td>Nombre</td>
+			<td>Distancia</td>
+			<td>Gravedad</td>
+			<td>Atmósfera</td>
+			<td>Elemento</td>
+			<td>Vida</td>
+			<td>Imagen</td>
+			
+		</tr>
+		<tr th:each="planeta : ${galaxia}"> <!--elemento : array(colección) -->
+			<td> <span th:text="${planeta.nombre}"></span> </td>
+			<td> <span th:text="${planeta.distancia}"></span> </td>
+			<td> <span th:text="${planeta.gravedad}"></span> </td>
+			<td> <span th:text="${planeta.hayAtmosfera}"></span> </td>
+			<td> <span th:text="${planeta.elemento}"></span> </td>
+			<td> <span th:text="${planeta.hayVida()}"></span> </td>
+			<td th:if="${planeta.hayVida()}"><img alt="Hay vida" width="50" src="http://data.whicdn.com/images/205854636/large.png"/></td> <!--Si hay vida muestra esta imagen -->
+			<td th:if="${!planeta.hayVida()}"><img alt="No hay vida" width="50" src="https://image.flaticon.com/icons/png/512/65/65525.png"/></td>  <!--Si no hay vida muestra esta imagen -->
+			
+		</tr>	
+	
+	</table>
+	
+</body>
+</html>
